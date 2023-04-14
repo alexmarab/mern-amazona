@@ -3,12 +3,26 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  extends: ['plugin:react/recommended', 'standard'],
+  settings: {
+    react: {
+      version: 'detect'
+    }
+  },
+  extends: [
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'standard',
+    'prettier',
+    'eslint-config-prettier'
+  ],
   overrides: [],
   parserOptions: {
+    ecmaFeatures: {
+      jsx: true
+    },
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  plugins: ['react'],
+  plugins: ['react', 'prettier'],
   rules: {}
 };
