@@ -1,4 +1,6 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
 import HomeScreen from './screens/HomeScreen';
 
 import './App.css';
@@ -9,7 +11,13 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <header className="header">
-          <Link to="/">amazona</Link>
+          <Navbar bg="dark" variant="dark">
+            <Container>
+              <LinkContainer to="/">
+                <Navbar.Brand>amazona</Navbar.Brand>
+              </LinkContainer>
+            </Container>
+          </Navbar>
         </header>
         <main>
           <Routes>
