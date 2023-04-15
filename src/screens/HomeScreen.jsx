@@ -1,16 +1,38 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-// import data from '../data';
-
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'FETCH_REQUEST':
+      return { ...state, loading: true };
+    case 'FETCH_SUCESS':
+      return { ...state, products: action.payload, loading: false };
+    case 'FETCH_FAIL':
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 function HomeScreen() {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
+  const [{ loading, error, products }, dispatch] = useReducer(reducer, {
+    loading: true,
+    error: '',
+    products: []
+  });
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get('/api/products');
-      setProducts(result.data);
+      dispatch({ type: 'FETCH_REQUEST' });
+      try {
+        const result = await axios.get('/api/products');
+        dispatch({ type: 'FETCH_SUCESS', payload: result.data });
+      } catch (error) {
+        dispatch({ type: 'FETCH_FAIL', payload: error.message });
+      }
+
+      // setProducts(result.data);
     };
 
     fetchData();
