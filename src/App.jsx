@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen';
 
 import './App.css';
+import ProductScreen from './screens/ProductScreen';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         </header>
         <main>
           <Routes>
+            <Route path="/product/:slug" element={<ProductScreen />} />
             <Route path="/" element={<HomeScreen />} />
           </Routes>
         </main>
