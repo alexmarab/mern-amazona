@@ -15,3 +15,11 @@
       npm i react-router-dom
    2. Create Route for Home Screen
    3. Create Router for Product Screen
+6. Fetch Products from Backend
+   1. Set Proxy in package.json
+      "proxy": url_to_backend_server
+   2. Install Axios
+      npm i axios
+   3. Use State Hook
+   4. Use Effect Hook
+   5. Use Reducer Hook
