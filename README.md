@@ -38,3 +38,8 @@
 10. Create Product Deatil Screen
     1. Fetch products from backend
     2. Create 3 columns for image, info and
+11. Create Loading Component and Message Component
+    1. Create loading component
+    2. Use spinner component
+    3. Create message component
+    4. Create utils.js to define getError function
