@@ -18,8 +18,8 @@ const reducer = (state, action) => {
       return state;
   }
 };
+
 function HomeScreen() {
-  // const [products, setProducts] = useState([]);
   const [{ loading, error, products }, dispatch] = useReducer(logger(reducer), {
     loading: true,
     error: '',
