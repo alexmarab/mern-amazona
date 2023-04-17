@@ -9,7 +9,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import './App.css';
 import ProductScreen from './screens/ProductScreen';
 import { useContext } from 'react';
-import { Store } from './context/store';
+import { Store } from './context/Store';
 
 function App() {
   const { state } = useContext(Store);
@@ -29,7 +29,8 @@ function App() {
                   Cart
                   {cart.cartItems.length > 0 && (
                     <Badge pill bg="danger">
-                      {cart.cartItems.length}
+                      {console.log('App Cart:', cart)}
+                      {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
                     </Badge>
                   )}
                 </Link>

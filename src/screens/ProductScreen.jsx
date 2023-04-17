@@ -13,7 +13,8 @@ import Rating from '../components/Rating';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { getError } from '../utils/utils';
-import { Store } from '../context/store';
+
+import { Store } from '../context/Store';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -52,12 +53,26 @@ function ProductScreen() {
     fetchData();
   }, [slug]);
 
-  // eslint-disable-next-line no-unused-vars
   const { state, dispatch: ctxDispatch } = useContext(Store);
-  const addToCartHandler = () => {
+  const { cart } = state;
+
+  const addToCartHandler = async () => {
+    const existItem = cart.cartItems.find((x) => x._id === product._id);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+
+    console.log('existItem:', existItem);
+    console.log('Quantity:', quantity);
+
+    const { data } = await axios.get(`/api/products/${product._id}`);
+
+    if (data.countInStock < quantity) {
+      window.alert('Sorry. Product is out of stock');
+      return;
+    }
+
     ctxDispatch({
       type: 'CART_ADD_ITEM',
-      payload: { ...product, quantity: 1 }
+      payload: { ...product, quantity }
     });
   };
 
