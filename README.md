@@ -48,3 +48,6 @@
     2. Define Reducer
     3. Create Store Provider
     4. Implement add to cart button click handler
+13. Complete Add to cart
+    1. Check exist item in the cart
+    2. Check count in stock in backend
