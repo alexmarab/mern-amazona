@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -15,6 +15,7 @@ import MessageBox from '../components/MessageBox';
 
 function CartScreen() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
+  const navigate = useNavigate();
 
   const {
     cart: { cartItems }
@@ -39,6 +40,10 @@ function CartScreen() {
       type: 'CART_REMOVE_ITEM',
       payload: item
     });
+  };
+
+  const checkoutHandler = () => {
+    navigate('/signin?redirect=/shipping');
   };
 
   return (
@@ -117,6 +122,7 @@ function CartScreen() {
                   <Button
                     type="button"
                     variant="primary"
+                    onClick={checkoutHandler}
                     disabled={cartItems.length === 0}
                   >
                     Process to Checkout

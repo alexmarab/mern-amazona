@@ -3,9 +3,14 @@ import { createContext, useReducer } from 'react';
 
 export const Store = createContext();
 
+/**
+ * Load cartItems from localStorage if exists
+ */
 const initialState = {
   cart: {
-    cartItems: []
+    cartItems: localStorage.getItem('cartItems')
+      ? JSON.parse(localStorage.getItem('cartItems'))
+      : []
   }
 };
 
@@ -24,6 +29,8 @@ const reducer = (state, action) => {
           )
         : [...state.cart.cartItems, newItem];
 
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
       return { ...state, cart: { ...state.cart, cartItems } };
     }
 
@@ -31,6 +38,8 @@ const reducer = (state, action) => {
       const cartItems = state.cart.cartItems.filter(
         (item) => item._id !== action.payload._id
       );
+
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
       return { ...state, cart: { ...state.cart, cartItems } };
     }
