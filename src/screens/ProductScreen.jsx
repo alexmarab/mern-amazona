@@ -1,5 +1,5 @@
 import { useContext, useEffect, useReducer } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -30,6 +30,7 @@ const reducer = (state, action) => {
 };
 
 function ProductScreen() {
+  const navigate = useNavigate();
   const params = useParams();
   const { slug } = params;
 
@@ -59,10 +60,6 @@ function ProductScreen() {
   const addToCartHandler = async () => {
     const existItem = cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
-
-    console.log('existItem:', existItem);
-    console.log('Quantity:', quantity);
-
     const { data } = await axios.get(`/api/products/${product._id}`);
 
     if (data.countInStock < quantity) {
@@ -74,6 +71,8 @@ function ProductScreen() {
       type: 'CART_ADD_ITEM',
       payload: { ...product, quantity }
     });
+
+    navigate('/cart');
   };
 
   return loading ? (
