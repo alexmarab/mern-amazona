@@ -48,3 +48,14 @@
     2. Define Reducer
     3. Create Store Provider
     4. Implement add to cart button click handler
+13. Complete Add to cart
+    1. Check exist item in the cart
+    2. Check count in stock in backend
+14. Create Cart Screen
+    1. Create 2 columns
+    2. Display items list
+    3. Create action column
+15. Complete Cart Screen
+    1. Click handler for inc/dec item
+    2. Click handler for remove item
+    3. Click handler for checkout
