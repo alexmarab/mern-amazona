@@ -69,3 +69,6 @@
     1. Create form inputs
     2. Handle save shipping address
     3. Add checkout wizard bar
+19. Create Sign Up Screen
+    1. Create form inputs
+    2. Handle submit
