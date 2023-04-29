@@ -72,3 +72,7 @@
 19. Create Sign Up Screen
     1. Create form inputs
     2. Handle submit
+20. Create Payment Method Screen
+    1. Create input form
+    2. Implement select payment method
+    3. Handle submit
