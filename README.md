@@ -76,3 +76,7 @@
     1. Create input form
     2. Implement select payment method
     3. Handle submit
+21. Create Place Order Screen
+    1. Show cart item, payment and screen
+    2. Handle place order action
+    3. Create order
