@@ -61,3 +61,7 @@
     3. Click handler for checkout
 16. Create SignIn Screen
     1. Create sign in form
+17. Complete Signin Screen
+    1. Handle submit action
+    2. Save token in store and local storage
+    3. Show user name in Header
